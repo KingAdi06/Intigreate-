@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .row {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .label-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  
+    .button {
+      width: 6px;
+      height: 40px;
+      text-align: center;
+      background: white;
+    
+      color: black;
+      border: none;
+      cursor: pointer;
+      margin-right: 70%;
+    }
+  
+    .vertical-button {
+      width: 80px;
+      height: 42px;
+      margin-bottom: 10px;
+      text-align: center;
+      border-radius: 10px;
+      border: 2.5px solid #A053CF;
+      color: #fff;
+      background: #A053CF;
+      cursor: pointer;
+    }
+  
+    .form {
+      display: none;
+    }
+  
+    .active-form {
+      display: block;
+    }
+  
+    .separator {
+      width: 30%;
+      height: 1px;
+      background-color: #ccc;
+      margin-left: 0;
+    }
+
+    h1 {
+      cursor: pointer;
+      font-size: 20px; 
+      color: #000;
+      font-family: 'Times New Roman', serif; 
+
+    
+     
+    }
+
+    h1:hover {
+      color: #3498db;
+    }
+
+    .active-h1 {
+      text-decoration: underline;
+      color: black;
+    }
+   
+    label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            margin-bottom: 10px;
+            size: 60px;
+        }
+        #photoContainer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        #photoLabel {
+            border: 2px solid #ccc;
+            padding: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        #photoUpload {
+            display: none;
+        }
+        .mys{
+            display: flex;
+            flex-direction: row;
+        }
+        .email{
+            margin-left: 500px;
+        }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="label-button-container">
+      <h1 data-form="personal" onclick="toggleForm('personal')">Personal details</h1>
+      <button class="button" onclick="toggleForm('personal')"><img src="images/dropDown.svg" alt="Dropdown"></button>
+    </div>
+    <hr class="separator">
+  </div>
+  <form id="personalForm" class="form">
+    <div class="mys">
+    <div id="photoContainer">
+        <label id="photoLabel" for="photoUpload">Upload Photo:</label>
+        <input type="file" id="photoUpload" name="photoUpload" accept="image/*">
+    </div>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+    </div>
+    <div class="email">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    </div>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="4" required></textarea>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select>
+
+    <label for="interests">Interests:</label>
+    <input type="text" id="interests" name="interests">
+
+    <label for="subscribe">Subscribe to newsletter:</label>
+    <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <div class="row">
+    <div class="label-button-container">
+      <h1 data-form="educational" onclick="toggleForm('educational')">Educational details</h1>
+      <button class="button" onclick="toggleForm('educational')">   <img src="images/dropDown.svg" alt="Dropdown"></button>
+    </div>
+    <hr class="separator">
+  </div>
+  <form id="educationalForm" class="form">
+    <!-- Educational details form content goes here -->
+    Educational details form
+  </form>
+
+  <div class="row">
+    <div class="label-button-container">
+      <h1 data-form="employment" onclick="toggleForm('employment')">Employment details</h1>
+      <button class="button" onclick="toggleForm('employment')"><img src="images/dropDown.svg" alt="Dropdown"></button>
+    </div>
+    <hr class="separator">
+  </div>
+  <form id="employmentForm" class="form">
+    <!-- Employment details form content goes here -->
+    Employment details form
+  </form>
+
+  <div class="row">
+    <button class="vertical-button" onclick="toggleForm('vertical')">Download</button>
+  </div>
+  <form id="verticalForm" class="form">
+    <!-- Vertical button form content goes here -->
+    Vertical Button form
+  </form>
+</div>
+
+<script>
+  function toggleForm(formType) {
+    var form = document.getElementById(`${formType}Form`);
+    form.classList.toggle('active-form');
+
+    var h1 = document.querySelector(`h1[data-form="${formType}"]`);
+    h1.classList.toggle('active-h1', form.classList.contains('active-form'));
+  }
+</script>
+
+</body>
+</html>
